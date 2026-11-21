@@ -1,0 +1,12 @@
+/* Shared typography scale: readable supporting copy across every route. */
+body{font-size:16px}
+main p:not(.eyebrow){font-size:16px!important;line-height:1.8}
+main li p{font-size:15px!important;line-height:1.75}
+main small,.site-footer p,.site-footer a,.footer-bottom{font-size:13px}
+.eyebrow{font-size:11px}
+.nav-links>a:not(.nav-cta){font-size:14px}
+.nav-cta,.button,.hero-secondary{font-size:13px}
+.focus-card p,.principle-grid p,.step-grid p,.service-row p,.service-approach>div>p,.updates-card>p:not(.eyebrow),.membership-intro-panel>p,.application-heading>p,.form-footnote,.field-help,.application-consent,.form-message{font-size:15px!important}
+.form-field,.form-field input,.form-field select,.form-field textarea,.form-field small,.upload-box strong,.upload-box small{font-size:14px}
+.footer-brand-col>p,.footer-note>p{font-size:14px}
+@media(max-width:680px){main p:not(.eyebrow){font-size:15px!important}.nav-links>a:not(.nav-cta){font-size:14px}.hero-copy>p:not(.eyebrow),.page-hero-content>p:last-child,.service-row p{font-size:15px!important}.application-consent{font-size:13px!important}}

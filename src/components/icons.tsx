@@ -1,0 +1,20 @@
+import type { SVGProps } from "react";
+
+type Props = SVGProps<SVGSVGElement> & { size?: number };
+const Icon = ({ children, size, ...props }: Props & { children: React.ReactNode }) => <svg viewBox="0 0 24 24" width={size ?? "1em"} height={size ?? "1em"} fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" {...props}>{children}</svg>;
+export const ArrowRight = (p: Props) => <Icon {...p}><path d="M5 12h14M12 5l7 7-7 7" /></Icon>;
+export const ArrowDown = (p: Props) => <Icon {...p}><path d="M12 4v16m-7-7 7 7 7-7" /></Icon>;
+export const ArrowUpRight = (p: Props) => <Icon {...p}><path d="M7 17 17 7M7 7h10v10" /></Icon>;
+export const Sprout = (p: Props) => <Icon {...p}><path d="M12 21v-9m0 2c0-5-4-8-9-8 0 5 3 9 9 9m0-5c0-5 4-8 9-8 0 5-3 9-9 9" /></Icon>;
+export const Wheat = (p: Props) => <Icon {...p}><path d="M12 22V8m0 4c-3 0-5-2-5-5 3 0 5 2 5 5Zm0-4c0-3 2-5 5-5 0 3-2 5-5 5Zm-1 11c-3 0-5-2-5-5 3 0 5 2 5 5Zm2-4c0-3 2-5 5-5 0 3-2 5-5 5Z" /></Icon>;
+export const UsersRound = (p: Props) => <Icon {...p}><path d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2m16 0v-2a4 4 0 0 0-3-3.87M14 3.13a4 4 0 0 1 0 7.75M10 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z" transform="translate(1)" /></Icon>;
+export const BookOpen = (p: Props) => <Icon {...p}><path d="M12 7v14m0-14C9 4 5 4 2 5v14c4-1 7-1 10 2m0-14c3-3 7-3 10-2v14c-4-1-7-1-10 2" /></Icon>;
+export const Handshake = (p: Props) => <Icon {...p}><path d="m3 12 4-4 4 2 2-2 7 4-3 5-5-2-3 2-6-5Zm4-4 3-3 4 1 2-1 5 4-2 3M7 13l4 3m2-1 2 1m-9-9-3 3" /></Icon>;
+export const Leaf = (p: Props) => <Icon {...p}><path d="M20 4c-9 0-15 3-15 10a6 6 0 0 0 6 6c7 0 10-7 9-16ZM4 21c3-5 7-8 12-11" /></Icon>;
+export const Menu = (p: Props) => <Icon {...p}><path d="M4 7h16M4 12h16M4 17h16" /></Icon>;
+export const X = (p: Props) => <Icon {...p}><path d="m18 6-12 12M6 6l12 12" /></Icon>;
+export const MapPin = (p: Props) => <Icon {...p}><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></Icon>;
+export const Phone = (p: Props) => <Icon {...p}><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.4 19.4 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7l.5 2.7a2 2 0 0 1-.6 1.8L7.7 9.5a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 1.8-.6l2.7.5a2 2 0 0 1 1.7 1.8Z" transform="scale(.9) translate(1.3 1.3)" /></Icon>;
+export const Mail = (p: Props) => <Icon {...p}><rect x="3" y="5" width="18" height="14" rx="1"/><path d="m3 7 9 6 9-6" /></Icon>;
+export const Check = (p: Props) => <Icon {...p}><path d="m5 12 4 4L19 6" /></Icon>;
+export const Upload = (p: Props) => <Icon {...p}><path d="M12 16V4m-5 5 5-5 5 5M4 16v4h16v-4" /></Icon>;

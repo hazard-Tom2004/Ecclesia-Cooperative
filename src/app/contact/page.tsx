@@ -1,0 +1,11 @@
+import type { Metadata } from "next";
+import { ArrowUpRight, Mail, MapPin, Phone } from "@/components/icons";
+import { Eyebrow } from "@/components/ui";
+
+export const metadata: Metadata = { title: "Contact" };
+
+export default function ContactPage() {
+  return <><section className="page-hero"><div className="page-hero-image page-hero-image-contact" /><div className="page-hero-wash" /><div className="container page-hero-content" data-reveal><Eyebrow light>Get in touch</Eyebrow><h1>Let’s start<br /><em>a conversation.</em></h1><p>We’re here to talk about membership, training and agricultural opportunities.</p></div></section>
+    <section className="section-pad"><div className="container contact-layout"><div data-reveal><Eyebrow>Connect with Ecclesia</Eyebrow><h2>We’re happy<br /><em>to hear from you.</em></h2><p>Choose the channel that works best. We’ll help you find the information or next step you’re looking for.</p></div><div className="contact-options" data-reveal><a href="tel:+2347011292508"><span className="contact-icon"><Phone size={19} /></span><span><small>CALL US</small><strong>+234 701 129 2508</strong></span><ArrowUpRight size={18} /></a><a href="tel:+2348166885630"><span className="contact-icon"><Phone size={19} /></span><span><small>ALTERNATE NUMBER</small><strong>+234 816 688 5630</strong></span><ArrowUpRight size={18} /></a><a href="mailto:ecclesiacooperative01@gmail.com"><span className="contact-icon"><Mail size={19} /></span><span><small>SEND AN EMAIL</small><strong>ecclesiacooperative01@gmail.com</strong></span><ArrowUpRight size={18} /></a><div className="contact-options-location"><span className="contact-icon"><MapPin size={19} /></span><span><small>OUR COMMUNITY</small><strong>Nigeria</strong><span className="contact-subcopy">Serving farmers and communities across Nigeria.</span></span></div></div></div></section>
+    <section className="contact-note"><div className="container contact-note-inner" data-reveal><div><Eyebrow light>Membership & programme enquiries</Eyebrow><h2>Not sure where to begin?</h2><p>Tell us what you’re interested in and our team can help point you in the right direction.</p></div><a className="button button-light" href="mailto:ecclesiacooperative01@gmail.com?subject=Enquiry%20for%20Ecclesia">Write to us <ArrowUpRight size={17} /></a></div></section></>;
+}
