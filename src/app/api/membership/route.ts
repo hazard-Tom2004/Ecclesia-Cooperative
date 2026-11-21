@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -66,30 +66,19 @@ export async function POST(request: Request) {
     return NextResponse.json({ message: "Use a valid JPEG, PNG or WebP image." }, { status: 400 });
   }
 
-  const host = process.env.SMTP_HOST;
-  const user = process.env.SMTP_USER;
-  const password = process.env.SMTP_PASS;
-  const port = Number(process.env.SMTP_PORT || 587);
+  const apiKey = process.env.RESEND_API_KEY;
+  const from = process.env.MAIL_FROM;
   const recipient = process.env.APPLICATION_EMAIL_TO || "ecclesiacooperative01@gmail.com";
-  if (!host || !user || !password) {
+  if (!apiKey || !from) {
     return NextResponse.json({ message: "Online applications are temporarily unavailable. Please contact Ecclesia by phone or email." }, { status: 503 });
   }
 
-  if (!Number.isInteger(port) || port < 1 || port > 65535) {
-    return NextResponse.json({ message: "Online applications are temporarily unavailable. Please contact Ecclesia by phone or email." }, { status: 503 });
-  }
   try {
-    const transporter = nodemailer.createTransport({
-      host,
-      port,
-      secure: port === 465,
-      requireTLS: port === 587,
-      auth: { user, pass: password },
-    });
-    await transporter.sendMail({
-      from: process.env.MAIL_FROM || user,
+    const resend = new Resend(apiKey);
+    const { error } = await resend.emails.send({
+      from,
       to: recipient,
-      replyTo: { name: fullName, address: email },
+      replyTo: `${fullName} <${email}>`,
       subject: `Membership application · ${fullName}`,
       text: [
         "New Ecclesia Cooperative membership application",
@@ -106,8 +95,13 @@ export async function POST(request: Request) {
         "",
         "The applicant's profile photo is attached.",
       ].join("\n"),
-      attachments: [{ filename: `membership-profile.${extension}`, content: bytes }],
+      attachments: [{
+        filename: `membership-profile.${extension}`,
+        content: bytes,
+        contentType: extension === "jpg" ? "image/jpeg" : `image/${extension}`,
+      }],
     });
+    if (error) throw new Error(error.message);
     return NextResponse.json({ message: "Thank you. Your membership application has been emailed to the Ecclesia team." }, { status: 201 });
   } catch {
     return NextResponse.json({ message: "We couldn’t send your application right now. Please try again or contact Ecclesia by phone or email." }, { status: 503 });

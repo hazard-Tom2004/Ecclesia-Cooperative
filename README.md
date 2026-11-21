@@ -16,7 +16,7 @@ Set `NEXT_PUBLIC_SITE_URL` to the production origin at build time so metadata an
 
 Keep public copy concise and edit the corresponding route under `src/app`. The website does not use a database. Membership applications are sent directly by email to the cooperative, with the applicant's profile photo attached.
 
-Copy `.env.example` to `.env.local` and provide SMTP credentials for the cooperative's email account. Set `APPLICATION_EMAIL_TO` to the inbox that should receive applications. Use the account provider's SMTP app password or other approved SMTP credential; the secret belongs in the deployment environment, not source control.
+Copy `.env.example` to `.env.local` and set `RESEND_API_KEY` plus `MAIL_FROM` to a sender address on a domain verified with Resend. Set `APPLICATION_EMAIL_TO` to the inbox that should receive applications. Keep the API key in the deployment environment, not source control. Until the Resend settings are supplied, the membership API returns a service-unavailable response and the production build can still run.
 
 Application fields include name, phone, email, community/state, occupation, agricultural interest, a short motivation, optional experience, consent and a JPEG, PNG or WebP photo up to 1,500,000 bytes. The photo is validated by its file signature and attached to the email; submitted data is not stored by the site.
 
